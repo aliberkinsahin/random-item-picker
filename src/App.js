@@ -57,12 +57,16 @@ function App() {
     updateItems(updatedItems);
   };
 
+  const handleClear = () => {
+    updateItems([]);
+  };
+
   return (
     <>
-    <h1 className="text-4xl font-semibold">
-      Randomizer
-    </h1>
-    <p className="text-xl m-2 mb-4 p-4 border-b-2 border-gray-600">Enter your items and let javascript gods decide...</p>
+      <h1 className="text-4xl font-semibold">Randomizer</h1>
+      <p className="text-xl m-2 mb-4 p-4 border-b-2 border-gray-600">
+        Enter your items and let javascript gods decide...
+      </p>
       <div className="container mx-auto shadow-lg sm:w-1/2 w-full p-6 bg-white rounded-md">
         <form className="flex " onSubmit={handleItems}>
           <input
@@ -97,12 +101,20 @@ function App() {
         {items.length > 0 && (
           <>
             <div className="border-t-2 border-gray-300 border-solid"></div>
-            <button
-              className="border border-indigo-600 bg-indigo-500 hover:bg-indigo-700 text-white px-4 py-2 rounded font-bold focus:outline-none w-full mb-1 mt-2"
-              onClick={handleRadomize}
-            >
-              Randomize
-            </button>
+            <div className="flex">
+              <button
+                className="border border-indigo-600 bg-indigo-500 hover:bg-indigo-700 text-white px-4 py-2 rounded font-bold focus:outline-none w-full mb-1 mt-2"
+                onClick={handleRadomize}
+              >
+                Randomize
+              </button>
+              <button
+                className="border border-red-700 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded font-bold focus:outline-none mb-1 ml-2 mt-2"
+                onClick={handleClear}
+              >
+                Clear
+              </button>
+            </div>
             <small>* Double click to remove an item.</small>
           </>
         )}
