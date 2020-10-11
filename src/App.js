@@ -59,10 +59,10 @@ function App() {
 
   return (
     <>
-    <h1 className="text-4xl font-semibold mb-2 ">
+    <h1 className="text-4xl font-semibold">
       Randomizer
     </h1>
-    <p className="text-xl mb-4 pb-3 border-b-2 border-gray-600">Enter your items and let javascript gods decide...</p>
+    <p className="text-xl m-2 mb-4 p-4 border-b-2 border-gray-600">Enter your items and let javascript gods decide...</p>
       <div className="container mx-auto shadow-lg sm:w-1/2 w-full p-6 bg-white rounded-md">
         <form className="flex " onSubmit={handleItems}>
           <input
