@@ -40,7 +40,7 @@ function App() {
   };
 
   return (
-    <div className="container mx-auto shadow-lg w-1/2 p-6 bg-white rounded-md">
+    <div className="container mx-auto shadow-lg sm:w-1/2 w-full p-6 bg-white rounded-md">
       <form className="flex " onSubmit={handleItems}>
         <input
           className="rounded focus:outline-none py-2 px-4 border border-indigo-600 flex-1 mr-2"
@@ -60,7 +60,9 @@ function App() {
       <ul>
         {items.map((_item, _index) => (
           <li
-            className={`font-semibold my-4 p-1 rounded ${_item.selected ? "bg-orange-600 text-white" : ""}`}
+            className={`font-semibold my-4 p-1 rounded ${
+              _item.selected ? "bg-orange-600 text-white" : ""
+            }`}
             key={_index}
           >
             {_item.text}
