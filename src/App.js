@@ -1,9 +1,20 @@
 import React, { useState } from "react";
 import "./App.css";
 
+const initialItems = JSON.parse(localStorage.getItem("items")) || [];
+
 function App() {
   const [input, setInput] = useState("");
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(initialItems);
+
+  const updateItems = (updatedItems) => {
+    storeToStorage(updatedItems);
+    setItems(updatedItems);
+  };
+
+  const storeToStorage = (items) => {
+    localStorage.setItem("items", JSON.stringify(items));
+  };
 
   const handleInput = (e) => {
     e.preventDefault();
@@ -18,7 +29,9 @@ function App() {
       text: input,
       selected: false,
     };
-    setItems([...items, newItem]);
+
+    const updatedItems = [...items, newItem];
+    updateItems(updatedItems);
     setInput("");
   };
 
@@ -36,12 +49,12 @@ function App() {
         ? { ..._item, selected: true }
         : { ..._item, selected: false }
     );
-    setItems(updatedItems);
+    updateItems(updatedItems);
   };
 
   const removeItem = (i) => {
     const updatedItems = items.filter((_, index) => index !== i);
-    setItems(updatedItems);
+    updateItems(updatedItems);
   };
 
   return (
