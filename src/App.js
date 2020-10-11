@@ -39,6 +39,11 @@ function App() {
     setItems(updatedItems);
   };
 
+  const removeItem = (i) => {
+    const updatedItems = items.filter((_, index) => index !== i);
+    setItems(updatedItems);
+  };
+
   return (
     <div className="container mx-auto shadow-lg sm:w-1/2 w-full p-6 bg-white rounded-md">
       <form className="flex " onSubmit={handleItems}>
@@ -60,22 +65,28 @@ function App() {
       <ul>
         {items.map((_item, _index) => (
           <li
-            className={`font-semibold my-4 p-1 rounded ${
+            className={`cursor-pointer font-semibold my-2 p-1 rounded hover:bg-gray-400 ${
               _item.selected ? "bg-orange-600 text-white" : ""
             }`}
             key={_index}
+            onDoubleClick={() => removeItem(_index)}
           >
             {_item.text}
           </li>
         ))}
       </ul>
+
       {items.length > 0 && (
-        <button
-          className="border border-indigo-600 bg-indigo-500 hover:bg-indigo-700 text-white px-4 py-2 rounded font-bold focus:outline-none"
-          onClick={handleRadomize}
-        >
-          Randomize
-        </button>
+        <>
+          <div className="border-t-2 border-gray-300 border-solid"></div>
+          <button
+            className="border border-indigo-600 bg-indigo-500 hover:bg-indigo-700 text-white px-4 py-2 rounded font-bold focus:outline-none w-full mb-1 mt-2"
+            onClick={handleRadomize}
+          >
+            Randomize
+          </button>
+          <small>* Double click to remove an item.</small>
+        </>
       )}
     </div>
   );
